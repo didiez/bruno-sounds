@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title>Animal Sounds for Bruno</title>
     <style>
         body {
@@ -37,35 +37,35 @@
             background-color: lightblue;
         }
 
-        .dog {
+        #dog {
             background-image: url('./dog.png');
         }
         
-        .cat {
+        #cat {
             background-image: url('./cat.png');
         }
 
-        .bird {
+        #bird {
             background-image: url('./bird.png');
         }
 
-        .cow {
+        #cow {
             background-image: url('./cow.png');
         }
 
-        .horse {
+        #horse {
             background-image: url('./horse.png');
         }
 
-        .frog {
+        #frog {
             background-image: url('./frog.png');
         }
 
-        .duck {
+        #duck {
             background-image: url('./duck.png');
         }
 
-        .elephant {
+        #elephant {
             background-image: url('./elephant.png');
         }
 
@@ -74,23 +74,23 @@
 
 <body>
 
-    <div class="animal dog" onclick="playSound('dog.mp3')">Dog</div>
-    <div class="animal cat" onclick="playSound('cat.mp3')">Cat</div>
-    <div class="animal bird" onclick="playSound('bird.mp3')">Bird</div>
-    <div class="animal cow" onclick="playSound('cow.mp3')">Cow</div>
-    <div class="animal horse" onclick="playSound('horse.mp3')">Horse</div>
-    <div class="animal frog" onclick="playSound('frog.mp3')">Frog</div>
-    <div class="animal duck" onclick="playSound('duck.mp3')">Duck</div>
-    <div class="animal elephant" onclick="playSound('elephant.mp3')">Elephant</div>
+    <div id="dog" class="animal">Dog</div>
+    <div id="cat" class="animal">Cat</div>
+    <div id="bird" class="animal">Bird</div>
+    <div id="cow" class="animal">Cow</div>
+    <div id="horse" class="animal">Horse</div>
+    <div id="frog" class="animal">Frog</div>
+    <div id="duck" class="animal">Duck</div>
+    <div id="elephant" class="animal">Elephant</div>
 
     <audio id="audio" src=""></audio>
 
     <script>
-        function playSound(soundFile) {
+        document.querySelectorAll(".animal").forEach(elem => ["click","touchstart"].forEach(event => elem.addEventListener(event, e => {
             var audio = document.getElementById("audio");
-            audio.src = soundFile;
-            audio.play();
-        }
+                audio.src = e.target.id + '.mp3';
+                audio.play();
+        })));
     </script>
 
 </body>
